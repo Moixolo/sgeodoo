@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_moixoloadventure_player,moixoloadventure.player,model_moixoloadventure_player,base.group_user,1,1,1,1
+access_moixoloadventure_city,moixoloadventure.city,model_moixoloadventure_city,base.group_user,1,1,1,1
+access_moixoloadventure_squadron,moixoloadventure.squadron,model_moixoloadventure_squadron,base.group_user,1,1,1,1
+access_moixoloadventure_fighter,moixoloadventure.figther,model_moixoloadventure_fighter,base.group_user,1,1,1,1
+access_moixoloadventure_cantsquadronfigther,moixoloadventure.cantsquadronfigther,model_moixoloadventure_cantsquadronfigther,base.group_user,1,1,1,1
+access_moixoloadventure_batle,moixoloadventure.batle,model_moixoloadventure_batle,base.group_user,1,1,1,1
+

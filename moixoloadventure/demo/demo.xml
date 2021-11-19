@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+
+          <record id="moixoloadventure.player_demo" model="moixoloadventure.player">
+            <field name="name">Player Demo</field>
+            <field name="description">Demostration of new player</field>
+            <field name="dni">00000000P</field>
+            <field name="edad">99</field>
+          </record>
+
+
+
+          <record id="moixoloadventure.city_demo" model="moixoloadventure.city">
+            <field name="name">City Demo</field>
+            <field name="description">Demostration of new City</field>
+            <field name="poweratac">99</field>
+            <field name="powerresistance">99</field>
+            <field name="nivel">99</field>
+            <field name="player" ref="moixoloadventure.player_demo"/>
+            
+            <!-- <field name="player" eval="[(6,0,[ref('moixoloadventure.squadron_demo')]))]" ></field> -->
+    
+          </record>
+
+
+          <record id="moixoloadventure.squadron_demo" model="moixoloadventure.squadron">
+            <field name="name">Squadron Demo</field>
+            <field name="description">Demostration of new squadron</field>
+            <field name="numberbatlesassisted">500</field>
+            <field name="cantfigters">100</field>
+            <field name="powerresistance">100</field>
+            <field name="poweratac">100</field>
+            <field name="nivel">100</field>
+          </record>
+
+          
+
+
+
+    </data>
+</odoo>
+
+
+

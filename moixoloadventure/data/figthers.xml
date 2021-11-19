@@ -1,0 +1,48 @@
+<odoo>
+    <data>
+
+        <record model="moixoloadventure.fighter" id="moixoloadventure.figther_chuky">
+            <field name="name">chuky</field>            
+            <field name="description">Pequeño pero maton </field>
+            <field name="powerresistance">50</field>
+            <field name="poweratac">36</field>
+        </record>
+
+        <record model="moixoloadventure.fighter" id="moixoloadventure.figther_laxicalacurva">
+            <field name="name">La xica de la curva</field>            
+            <field name="description">Siempre va recta</field>
+            <field name="powerresistance">40</field>
+            <field name="poweratac">25</field>
+        </record>
+
+        <record model="moixoloadventure.fighter" id="moixoloadventure.jhonwek">
+            <field name="name">Jhon wek</field>            
+            <field name="description">Si tens ous para'l</field>
+            <field name="powerresistance">95</field>
+            <field name="poweratac">95</field>
+        </record>
+
+        <record model="moixoloadventure.fighter" id="moixoloadventure.garfield">
+            <field name="name">Garfield</field>            
+            <field name="description">solo traba los lunes </field>
+            <field name="powerresistance">15</field>
+            <field name="poweratac">15</field>
+        </record>
+
+        <record model="moixoloadventure.fighter" id="moixoloadventure.figther_bobesponja">
+            <field name="name">Bob esponja</field>            
+            <field name="description">Resistent com un nanax </field>
+            <field name="powerresistance">85</field>
+            <field name="poweratac">30</field>
+        </record>
+
+        <record model="moixoloadventure.fighter" id="moixoloadventure.figther_sogra">
+            <field name="name">Sogra</field>            
+            <field name="description">Jutza i ataca sense avisar</field>
+            <field name="powerresistance">80</field>
+            <field name="poweratac">60</field>
+        </record>
+
+
+    </data>
+</odoo>
