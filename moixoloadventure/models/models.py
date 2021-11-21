@@ -72,7 +72,7 @@ class squadron(models.Model):
                resistance=0
                powerattac=0
                for figther in squadron.fighters:
-                    resistance = resistance + figther.fighter.powerresistance * figther.cant
+                    resistance = resistance + figther.figther.powerresistance * figther.cant
                     powerattac = resistance + figther.figther.poweratac * figther.cant
                squadron.powerresistance = resistance
                squadron.poweratac = powerattac
@@ -85,8 +85,9 @@ class cantsquadronfigther(models.Model):
      _description = 'Cant figthers for squadron '
      nivel = fields.Integer()
      cant = fields.Integer()
+     #positionFormation = fields.Selection([('1', 'piebatalla'), ('2','segundaguardia'), ('3', 'altomando')])
 
-     fighter = fields.Many2one("moixoloadventure.fighter")
+     figther = fields.Many2one("moixoloadventure.fighter")
      squadron = fields.Many2one("moixoloadventure.squadron")
 
      
@@ -98,6 +99,8 @@ class fighter(models.Model):
      foto = fields.Image(max_with=200, max_heigth=200)
      name = fields.Char()
      description = fields.Text()
+     positionFormation = fields.Text()
+     
      
      powerresistance=fields.Integer()
      poweratac=fields.Integer()

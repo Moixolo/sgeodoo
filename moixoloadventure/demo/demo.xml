@@ -22,7 +22,6 @@
     
           </record>
 
-
           <record id="moixoloadventure.squadron_demo" model="moixoloadventure.squadron">
             <field name="name">Squadron Demo</field>
             <field name="description">Demostration of new squadron</field>

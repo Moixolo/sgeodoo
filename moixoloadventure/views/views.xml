@@ -2,26 +2,105 @@
   <data>
     <!-- explicit list view definition -->
 
+
     <record model="ir.ui.view" id="moixoloadventure.player_list">
       <field name="name">moixoloadventure list</field>
       <field name="model">moixoloadventure.player</field>
       <field name="arch" type="xml">
         <tree>
-        
           <field name="name"/>
           <field name="dni"/>
           <field name="description"/>
-           <field name="edad"/>
+          <field name="edad"/>
+        </tree>
+      </field>
+    </record>
 
+    <record model="ir.ui.view" id="moixoloadventure.city_list">
+      <field name="name">moixoloadventure list</field>
+      <field name="model">moixoloadventure.city</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+          <field name="nivel"/>
+          <field name="poweratac"/>
+          <field name="powerresistance"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="moixoloadventure.squadron_list">
+      <field name="name">moixoloadventure list</field>
+      <field name="model">moixoloadventure.squadron</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+          <field name="datacreation"/>
+          <field name="numberbatlesassisted"/>
+          <field name="cantfigters"/>
+          <field name="powerresistance"/>
+          <field name="poweratac"/>
+          <field name="nivel"/>
         </tree>
       </field>
     </record>
 
 
+    <!--  VISTA FORM DELS FIGTHERS 
+    
+    <record model="ir.ui.view" id="moixoloadventure.figther_list">
+      <field name="name">moixoloadventure list</field>
+      <field name="model">moixoloadventure.fighter</field>
+      <field name="arch" type="xml">
+        <tree>        
+          <field name="name"/>
+          <field name="description"/>
+          <field name="powerresistance"/>
+          <field name="poweratac"/>
+        </tree>
+      </field>
+    </record>
+-->
+    <!--  VISTA FORM DELS FIGTHERS  -->
+    <record model="ir.ui.view" id="moixoloadventure.figther_form">
+      <field name="name">moixoloadventure list</field>
+      <field name="model">moixoloadventure.fighter</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <separator string ="Personal info"></separator>
+              <field name="name"/>
+              <field name="description"/>
+              <field name="positionFormation"/> 
+            </group>
+            <notebook>
+              <page name="power" string="Power figther">
+                <field name="powerresistance"/>
+                <field name="poweratac"/>
+              </page>
+            </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="moixoloadventure.cantsquadronfigther_list">
+      <field name="name">moixoloadventure list</field>
+      <field name="model">moixoloadventure.cantsquadronfigther</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="cant"/>
+          <field name="nivel"/>
+        </tree>
+      </field>
+    </record>
+
     <!-- actions opening views on models -->
-
-
-
     <record model="ir.actions.act_window" id="moixoloadventure.action_player_window">
       <field name="name">moixoloadventure Player</field>
       <field name="res_model">moixoloadventure.player</field>
@@ -47,7 +126,7 @@
       <field name="name">moixoloadventure Fighter</field>
       <field name="res_model">moixoloadventure.fighter</field>
       <field name="arch" type="xml">
-        <tree  decoration-info="poweratac > 50">
+        <tree decoration-info="poweratac > 50">
           <field name="name" />
           <field name="res_model" />
         </tree>
@@ -71,7 +150,7 @@
 
 
     <!-- server action to the one above -->
-<!--
+    <!--
     <record model="ir.actions.server" id="moixoloadventure.action_server">
       <field name="name">moixoloadventure server</field>
       <field name="model_id" ref="model_moixoloadventure_moixoloadventure"/>
@@ -93,22 +172,16 @@
     <!-- menu categories -->
 
     <menuitem name="Configuracio" id="moixoloadventure.menu_1" parent="moixoloadventure.menu_root"/>
-    
+
 
     <!-- actions -->
 
-    <menuitem name="Player" id="moixoloadventure.menu_player" parent="moixoloadventure.menu_1"
-              action="moixoloadventure.action_player_window"/>
-    <menuitem name="City" id="moixoloadventure.menu_city" parent="moixoloadventure.menu_1"
-              action="moixoloadventure.action_city_window"/>
-    <menuitem name="Squadron" id="moixoloadventure.menu_squadron" parent="moixoloadventure.menu_1"
-              action="moixoloadventure.action_squadron_window"/>
-    <menuitem name="Fighter" id="moixoloadventure.menu_fighter" parent="moixoloadventure.menu_1"
-              action="moixoloadventure.action_fighter_window"/>
-    <menuitem name="Luchadores en escuadron" id="moixoloadventure.menu_cantsquadronfigther" parent="moixoloadventure.menu_1"
-              action="moixoloadventure.action_cantsquadronfigther_window"/>
-    <menuitem name="Batalla" id="moixoloadventure.menu_batle" parent="moixoloadventure.menu_1"
-              action="moixoloadventure.action_batle_window"/>
+    <menuitem name="Player" id="moixoloadventure.menu_player" parent="moixoloadventure.menu_1" action="moixoloadventure.action_player_window"/>
+    <menuitem name="City" id="moixoloadventure.menu_city" parent="moixoloadventure.menu_1" action="moixoloadventure.action_city_window"/>
+    <menuitem name="Squadron" id="moixoloadventure.menu_squadron" parent="moixoloadventure.menu_1" action="moixoloadventure.action_squadron_window"/>
+    <menuitem name="Fighter" id="moixoloadventure.menu_fighter" parent="moixoloadventure.menu_1" action="moixoloadventure.action_fighter_window"/>
+    <menuitem name="Luchadores en escuadron" id="moixoloadventure.menu_cantsquadronfigther" parent="moixoloadventure.menu_1" action="moixoloadventure.action_cantsquadronfigther_window"/>
+    <menuitem name="Batalla" id="moixoloadventure.menu_batle" parent="moixoloadventure.menu_1" action="moixoloadventure.action_batle_window"/>
 
 
   </data>
