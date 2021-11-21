@@ -85,9 +85,9 @@ class cantsquadronfigther(models.Model):
      _description = 'Cant figthers for squadron '
      nivel = fields.Integer()
      cant = fields.Integer()
-     #positionFormation = fields.Selection([('1', 'piebatalla'), ('2','segundaguardia'), ('3', 'altomando')])
+     positionFormation = fields.Selection([('1', 'piebatalla'), ('2','segundaguardia'), ('3', 'altomando')])
 
-     figther = fields.Many2one("moixoloadventure.fighter")
+     figther = fields.Many2one("moixoloadventure.fighter", domain="'positionFormation','=',positionFormation", ondelete='set null')
      squadron = fields.Many2one("moixoloadventure.squadron")
 
      
