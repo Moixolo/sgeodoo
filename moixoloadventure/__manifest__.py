@@ -28,7 +28,7 @@
         'views/views.xml',
         'views/templates.xml',
         'data/figthers.xml',
-        'data/cities.xml',
+        
     ],
     # only loaded in demonstration mode
     'demo': [

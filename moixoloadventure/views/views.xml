@@ -2,104 +2,274 @@
   <data>
     <!-- explicit list view definition -->
 
-
-    <record model="ir.ui.view" id="moixoloadventure.player_list">
+    <!-- PLAYER ********************************************************************************************* -->
+    <record model="ir.ui.view" id="moixoloadventure.player_form">
       <field name="name">moixoloadventure list</field>
       <field name="model">moixoloadventure.player</field>
       <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="dni"/>
-          <field name="description"/>
-          <field name="edad"/>
-        </tree>
-      </field>
-    </record>
 
-    <record model="ir.ui.view" id="moixoloadventure.city_list">
-      <field name="name">moixoloadventure list</field>
-      <field name="model">moixoloadventure.city</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="description"/>
-          <field name="nivel"/>
-          <field name="poweratac"/>
-          <field name="powerresistance"/>
-        </tree>
-      </field>
-    </record>
-
-    <record model="ir.ui.view" id="moixoloadventure.squadron_list">
-      <field name="name">moixoloadventure list</field>
-      <field name="model">moixoloadventure.squadron</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="description"/>
-          <field name="datacreation"/>
-          <field name="numberbatlesassisted"/>
-          <field name="cantfigters"/>
-          <field name="powerresistance"/>
-          <field name="poweratac"/>
-          <field name="nivel"/>
-        </tree>
-      </field>
-    </record>
-
-
-    <!--  VISTA FORM DELS FIGTHERS 
-    
-    <record model="ir.ui.view" id="moixoloadventure.figther_list">
-      <field name="name">moixoloadventure list</field>
-      <field name="model">moixoloadventure.fighter</field>
-      <field name="arch" type="xml">
-        <tree>        
-          <field name="name"/>
-          <field name="description"/>
-          <field name="powerresistance"/>
-          <field name="poweratac"/>
-        </tree>
-      </field>
-    </record>
--->
-    <!--  VISTA FORM DELS FIGTHERS  -->
-    <record model="ir.ui.view" id="moixoloadventure.figther_form">
-      <field name="name">moixoloadventure list</field>
-      <field name="model">moixoloadventure.fighter</field>
-      <field name="arch" type="xml">
         <form>
-          <sheet>
+        <header>
+           <!-- 
+          <field name="levelUser"/>
+          -->
+          <!-- Aci vull posar el progressbar pero no se com implementarlo ¿quines dades utilitze?-->
+          <!-- <button name="return" type="object" string="Aumentar espacio" class="oe_highlight"/> -->          
+        </header>
+          <sheet>            
+            <separator string="IMAGE"></separator>
+              <field name="foto" widget="image"/>
             <group>
-              <separator string ="Personal info"></separator>
-              <field name="name"/>
-              <field name="description"/>
-              <field name="positionFormation"/> 
+              <group>
+              <separator string="PERSONAL DATA"></separator>
+                  <field name="name"/>
+                  <field name="surename1"/>
+                  <field name="surename2"/>
+                  <field name="dni"/>
+                  <field name="description"/>
+                  <field name="edad"/>
+                  <field name="birthday"/>
+              </group>   
+              <group>
+              <separator string="USER DATA"></separator>
+                <field name="username"/>
+                <field name="descriptionuser"/>
+                <h4>Siguiente nivel</h4>
+                <field name="nextlevel" widget="percentpie"/>
+                <h4>Capacidad de squadrones</h4>
+                <field name="capacitisquadroncity" widget="progressbar"/>
+              </group> 
             </group>
             <notebook>
-              <page name="power" string="Power figther">
-                <field name="powerresistance"/>
-                <field name="poweratac"/>
+              <page name="cities" string="My cities">
+              <field name="cities"/>                
+              </page>
+              <page name="squadron" string="My squadrons">
+              <field name="squadron"/>                
               </page>
             </notebook>
-
+            
+         
           </sheet>
         </form>
       </field>
     </record>
 
 
+
+<!-- CITY ********************************************************************************************* -->
+
+    <record model="ir.ui.view" id="moixoloadventure.city_form">
+      <field name="name">moixoloadventure list</field>
+      <field name="model">moixoloadventure.city</field>
+      <field name="arch" type="xml">
+        <form >
+          <sheet>
+            <group>
+              <separator string="Image" ></separator>
+                <field name="foto" widget="image"/>
+              
+              <group>
+                <separator string="City data" ></separator>
+                  <field name="name"/>
+                  <field name="description"/>
+                  <field name="level"/>
+                  <field name="poweratac"/>
+                  <field name="powerresistance"/>   
+              </group>
+            </group>
+              <notebook>
+                <page name="squadron" string="Squadron">
+                  <field name="squadron" >
+                    <tree decoration-info="name">
+                      <field name="name"/>
+                      <field name="description"/>
+                      <field name="datacreation"/>
+                    </tree> 
+                  </field>   
+                </page>
+              </notebook>                          
+           
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+
+<!-- SQUADRON ********************************************************************************************* -->
+    <record model="ir.ui.view" id="moixoloadventure.squadron_form">
+      <field name="name">moixoloadventure form</field>
+      <field name="model">moixoloadventure.squadron</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+            <separator string="Image" ></separator>
+            <field name="foto" widget="image"/>
+              <group>
+              <separator string="Dates" ></separator>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="datacreation"/>
+                <field name="numberbatlesassisted"/>
+                <field name="cantfigters"/>
+                <field name="powerresistance"/>
+                <field name="poweratac"/>
+                <field name="nivel"/>              
+              </group>
+            </group>
+            <notebook>
+              <page name="fighters" string="Figthers">
+                <field name="fighters"/>
+                               
+              </page>
+              <page name="batle" string="Batles">
+                <field name="batle" />
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+
+
+<!-- FIGTHERS ********************************************************************************************* -->
+    <!--  VISTA FORM DELS FIGTHERS  -->
+ 
+    <record model="ir.ui.view" id="moixoloadventure.figther_form">
+      <field name="name">moixoloadventure form</field>
+      <field name="model">moixoloadventure.fighter</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+          <group>                     
+            <group>
+              <separator string ="Personal info"></separator>
+              <field name="name"/>
+              <field name="description"/>
+            </group>
+            <group>
+              <separator string ="Tactical info"></separator>
+              <field name="powerresistance" readonly="True" />
+              <field name="poweratac" readonly="True" />
+              <field name="nivel" readonly="True" />
+            </group>
+              <separator string ="Foto" readonly="True"></separator>
+              <field name="foto" widget="image" readonly="True"></field>
+          </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+   
+    <!--  VISTA KAMBAS DELS FIGTHERS  -->
+    <record id="model_name_view_kanban" model="ir.ui.view">
+      <field name="name">model.name.view.kanban</field>
+      <field name="model">moixoloadventure.fighter</field>
+      <field name="arch" type="xml">
+        <!-- <kanban default_group_by="level"> -->
+        <!-- <kanban default_group_by="level" quick_create="true"> -->
+
+        <kanban default_order_by="nivel">
+          <!--definim les variables per a utilitzar en el kanban-->
+          <field name="id" />
+          <field name="nivel" />
+          <templates>
+            <t t-name="kanban-box">
+            <div t-attf-class="oe_kanban_get_color{{(record.nivel.raw_value)}}">
+              <a type="open">
+                <img class="oe_kanban_image" t-att-src="kanban_image('moixoloadventure.fighter', 'foto' , record.id.value)" />
+              </a>
+              <h2><field name="name" /></h2>
+              <h3><field name="description" /></h3>
+              <h3><field name="nivel" /></h3>
+            </div>          
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+<!-- CANT SQUADRON ********************************************************************************************* -->
     <record model="ir.ui.view" id="moixoloadventure.cantsquadronfigther_list">
       <field name="name">moixoloadventure list</field>
       <field name="model">moixoloadventure.cantsquadronfigther</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="cant"/>
-          <field name="nivel"/>
+          <field name="figther"></field>          
         </tree>
       </field>
     </record>
 
+<!-- BATLE  ********************************************************************************************* -->
+    <record model="ir.ui.view" id="moixoloadventure.batles_list">
+      <field name="name">moixoloadventure list</field>
+      <field name="model">moixoloadventure.batle</field>
+      <field name="arch" type="xml">
+
+
+
+        <tree decoration-info="name" >
+          <field name="name"></field>
+          <field name="time"></field>
+          <field name="duration"></field>
+          <field name="winer"></field>
+          <field name="louser"></field>
+          <field name="squadron"></field>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="moixoloadventure.batles_search">
+      <field name="name">moixoloadventure search</field>
+      <field name="model">moixoloadventure.batle</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"></field>
+          <field name="time"></field>
+          <field name="duration"></field>
+          <!--especifiquem el criteri de busqueda-->
+          <field name="time" string="més de un mes" filter_domain="[('duration', '>', 30)]"></field>
+          <field name="winer"></field>
+          <field name="louser"></field>
+          <field name="squadron"></field>  
+          <!-- Filtres -->
+          <filter name="onmoth" string="un mes" domain="[('duration', '=', '30')]"/>
+          <filter name="diespars" string="Dies pars " context="{'group_by': 'duration'}"/>
+        </search>
+
+      </field>
+    </record>
+
+
+ <!-- calendar ********************************************************************************************* -->
+    <record model="ir.ui.view" id="moixoloadventure.calendar" >
+      <field name="name">moixoloadventure Calendar</field>
+      <field name="model">moixoloadventure.calendar</field>
+      <field name="arch" type="xml">
+        <tree decoration-info="name" >
+          <field name="name"></field>
+          <field name="duration"></field>
+          <field name="initialDate"></field>
+          <field name="finalDate"></field>
+        </tree>
+      </field>
+         <!--
+        <calendar string="Batle calendar" date_start="initialDate"  date_stop="finalDate">
+
+        </calendar>
+-->
+      
+    </record>
+
+
+
+
+
+    
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="moixoloadventure.action_player_window">
       <field name="name">moixoloadventure Player</field>
@@ -119,24 +289,8 @@
     <record model="ir.actions.act_window" id="moixoloadventure.action_fighter_window">
       <field name="name">moixoloadventure Fighter</field>
       <field name="res_model">moixoloadventure.fighter</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,kanban</field>
     </record>
-    <!--
-    <record model="ir.ui.view" id="moixoloadventure.action_fighter_window">
-      <field name="name">moixoloadventure Fighter</field>
-      <field name="res_model">moixoloadventure.fighter</field>
-      <field name="arch" type="xml">
-        <tree decoration-info="poweratac > 50">
-          <field name="name" />
-          <field name="res_model" />
-        </tree>
-      
-      </field>
-
-    </record>
--->
-
-
     <record model="ir.actions.act_window" id="moixoloadventure.action_cantsquadronfigther_window">
       <field name="name">moixoloadventure CantLuchadores</field>
       <field name="res_model">moixoloadventure.cantsquadronfigther</field>
@@ -145,6 +299,11 @@
     <record model="ir.actions.act_window" id="moixoloadventure.action_batle_window">
       <field name="name">moixoloadventure Batle</field>
       <field name="res_model">moixoloadventure.batle</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="moixoloadventure.action_calendar_window">
+      <field name="name">moixoloadventure Calendar</field>
+      <field name="res_model">moixoloadventure.calendar</field>
       <field name="view_mode">tree,form</field>
     </record>
 
@@ -180,9 +339,9 @@
     <menuitem name="City" id="moixoloadventure.menu_city" parent="moixoloadventure.menu_1" action="moixoloadventure.action_city_window"/>
     <menuitem name="Squadron" id="moixoloadventure.menu_squadron" parent="moixoloadventure.menu_1" action="moixoloadventure.action_squadron_window"/>
     <menuitem name="Fighter" id="moixoloadventure.menu_fighter" parent="moixoloadventure.menu_1" action="moixoloadventure.action_fighter_window"/>
-    <menuitem name="Luchadores en escuadron" id="moixoloadventure.menu_cantsquadronfigther" parent="moixoloadventure.menu_1" action="moixoloadventure.action_cantsquadronfigther_window"/>
+    <!-- <menuitem name="Luchadores en escuadron" id="moixoloadventure.menu_cantsquadronfigther" parent="moixoloadventure.menu_1" action="moixoloadventure.action_cantsquadronfigther_window"/>-->
     <menuitem name="Batalla" id="moixoloadventure.menu_batle" parent="moixoloadventure.menu_1" action="moixoloadventure.action_batle_window"/>
-
+    <menuitem name="Calendar" id="moixoloadventure.menu_calendar" parent="moixoloadventure.menu_1" action="moixoloadventure.action_calendar_window"/>
 
   </data>
 </odoo>
