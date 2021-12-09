@@ -7,7 +7,6 @@
       <field name="name">moixoloadventure list</field>
       <field name="model">moixoloadventure.player</field>
       <field name="arch" type="xml">
-
         <form>
         <header>
            <!-- 
@@ -47,9 +46,7 @@
               <page name="squadron" string="My squadrons">
               <field name="squadron"/>                
               </page>
-            </notebook>
-            
-         
+            </notebook>        
           </sheet>
         </form>
       </field>
@@ -113,7 +110,6 @@
                 <field name="description"/>
                 <field name="datacreation"/>
                 <field name="numberbatlesassisted"/>
-                <field name="cantfigters"/>
                 <field name="powerresistance"/>
                 <field name="poweratac"/>
                 <field name="nivel"/>              
@@ -121,8 +117,7 @@
             </group>
             <notebook>
               <page name="fighters" string="Figthers">
-                <field name="fighters"/>
-                               
+                <field name="fighters"/>                               
               </page>
               <page name="batle" string="Batles">
                 <field name="batle" />
@@ -164,6 +159,16 @@
         </form>
       </field>
     </record>
+    <!--  VISTA TREE DELS FIGTHERS 
+    <record id="moixoloadventure.figther_tree" model="ir.ui.view">
+      <field name="name">moixoloadventure tree</field>
+      <field name="model">moixoloadventure.fighter</field>
+      <field name="arch" type="xml">
+        <field name="name"/>
+        <field name="nivel"/>
+      </field> 
+    </record>
+ -->
    
     <!--  VISTA KAMBAS DELS FIGTHERS  -->
     <record id="model_name_view_kanban" model="ir.ui.view">
@@ -198,8 +203,15 @@
       <field name="name">moixoloadventure list</field>
       <field name="model">moixoloadventure.cantsquadronfigther</field>
       <field name="arch" type="xml">
-        <tree>
-          <field name="figther"></field>          
+        <tree>  
+          <field name="figther"></field>    
+          <field name="cant"/>
+          <field name="nivellfigther"/>
+          <field name="positionFormation"/>
+          
+          
+
+          
         </tree>
       </field>
     </record>
@@ -304,7 +316,7 @@
     <record model="ir.actions.act_window" id="moixoloadventure.action_calendar_window">
       <field name="name">moixoloadventure Calendar</field>
       <field name="res_model">moixoloadventure.calendar</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,calendar</field>
     </record>
 
 

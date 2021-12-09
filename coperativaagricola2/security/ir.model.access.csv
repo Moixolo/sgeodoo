@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_coperativaagricola2_coperativaagricola2,coperativaagricola2.coperativaagricola2,model_coperativaagricola2_coperativaagricola2,base.group_user,1,1,1,1
+access_coperativaagricola2_camio,coperativaagricola2.camio,model_coperativaagricola2_camio,base.group_user,1,1,1,1
+access_coperativaagricola2_caixo,coperativaagricola2.caixo,model_coperativaagricola2_caixo,base.group_user,1,1,1,1
+access_coperativaagricola2_varietatfruta,coperativaagricola2.varietatfruta,model_coperativaagricola2_varietatfruta,base.group_user,1,1,1,1

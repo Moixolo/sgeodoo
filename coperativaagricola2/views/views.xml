@@ -1,0 +1,161 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <!-- COPERATIVA********************************************************** -->
+    <record model="ir.ui.view" id="coperativaagricola2.list">
+      <field name="name">coperativaagricola2 list</field>
+      <field name="model">coperativaagricola2.coperativaagricola2</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="capacityalmacen"/>
+          <field name="capacidadcamiones"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+
+
+<!-- CAMIONS********************************************************** -->
+    <record model="ir.ui.view" id="coperativaagricola2.camio_list">
+        <field name="name">camio list</field>
+        <field name="model">coperativaagricola2.camio</field>
+        <field name="arch" type="xml">
+          <tree>
+            <field name="name"/>
+            <field name="description"/>
+            <field name="cantitatcarrega"/>
+            <field name="duraciocarrega"/>
+
+          </tree>
+        </field>
+    </record>
+
+<!-- CAIXONS********************************************************** -->
+    <record model="ir.ui.view" id="coperativaagricola2.caixo_list">
+        <field name="name">caixo list</field>
+        <field name="model">coperativaagricola2.caixo</field>
+        <field name="arch" type="xml">
+          <tree>
+            <field name="name"/>
+            <field name="description"/>
+
+            <field name="arrobacapacitat"/>
+            <field name="espaiqueocupa"/>
+
+            
+            
+
+          </tree>
+        </field>
+    </record>
+
+
+
+<!-- FRUTA********************************************************** -->
+    <record model="ir.ui.view" id="coperativaagricola2.varietatfruta_list">
+        <field name="name">caixo list</field>
+        <field name="model">coperativaagricola2.varietatfruta</field>
+        <field name="arch" type="xml">
+
+          <tree>
+            <field name="name"/>
+            <field name="description"/>
+            <field name="arrobaqueacupa"/>
+            <field name="tempsmaduraciodesdecollita"/>
+            <field name="caixonsnecessaris"/>
+            <field name="categoriafruta"/>
+            <button name="sumaruno"  type="object" string="Aumentar espacio" class="oe_highlight" />
+
+           </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="coperativaagricola2.varietatfruta_form">
+    <field name="name">caixo list</field>
+    <field name="model">coperativaagricola2.varietatfruta</field>
+    <field name="arch" type="xml">
+          <form>
+            <sheet>
+              <group>
+                  <field name="name"/>
+                  <field name="description"/>
+                  <field name="arrobaqueacupa"/>
+                  <field name="tempsmaduraciodesdecollita"/>
+                  <field name="caixonsnecessaris"/>
+                  <field name="categoriafruta"/>
+                  <button name="sumaruno"  type="object" string="Aumentar espacio" class="oe_highlight" />
+                                     
+              </group>
+            </sheet>
+          </form>
+        </field>
+      </record>
+          
+          
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="coperativaagricola2.action_window">
+      <field name="name">Coperativa</field>
+      <field name="res_model">coperativaagricola2.coperativaagricola2</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="coperativaagricola2.action_camio_window">
+      <field name="name">Camions</field>
+      <field name="res_model">coperativaagricola2.camio</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="coperativaagricola2.action_caixo_window">
+      <field name="name">Camions</field>
+      <field name="res_model">coperativaagricola2.caixo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="coperativaagricola2.action_varietatfruta_window">
+      <field name="name">Fruta</field>
+      <field name="res_model">coperativaagricola2.varietatfruta</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="coperativaagricola2.action_server">
+      <field name="name">coperativaagricola2 server</field>
+      <field name="model_id" ref="model_coperativaagricola2_coperativaagricola2"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="Gestio Coperativa" id="coperativaagricola2.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Options" id="coperativaagricola2.menu_1" parent="coperativaagricola2.menu_root"/>
+
+
+    <!-- actions -->
+
+    <menuitem name="Coperativa" id="coperativaagricola2.menu_1_list" parent="coperativaagricola2.menu_1" action="coperativaagricola2.action_window"/>
+    <menuitem name="Camions" id="coperativaagricola2.camio" parent="coperativaagricola2.menu_1" action="coperativaagricola2.action_camio_window"/>
+    <menuitem name="Caixons" id="coperativaagricola2.caixo" parent="coperativaagricola2.menu_1" action="coperativaagricola2.action_caixo_window"/>
+    <menuitem name="Fruta" id="coperativaagricola2.varietatfruta" parent="coperativaagricola2.menu_1" action="coperativaagricola2.action_varietatfruta_window"/>
+
+<!-- actions      
+    <menuitem name="Server to list" id="coperativaagricola2" parent="coperativaagricola2.menu_2"
+              action="coperativaagricola2.action_server"/>
+-->
+  </data>
+</odoo>

@@ -4,7 +4,7 @@ from collections import namedtuple
 from odoo import models, fields, api
 import re
 import logging
-from odoo.exceptions import ValidationError
+
 from odoo import http
 
 _logger = logging.getLogger(__name__)
@@ -92,10 +92,7 @@ class city(models.Model):#******************************************************
                else:
                     p.powerresistance = 0
                     #p.poweratac = 0
-
-
-
-               
+            
           
 
 
@@ -107,49 +104,45 @@ class squadron(models.Model):#**************************************************
      description = fields.Text()
      datacreation = fields.Datetime(default=lambda self:fields.Datetime.now())
      numberbatlesassisted=fields.Integer()
-     cantfigters = fields.Integer()
 
-     
      powerresistance=fields.Integer(compute='_get_nivelbase')
      poweratac=fields.Integer(compute='_get_nivelbase')
-     nivel = fields.Integer()
+        
+     nivel = fields.Integer(compute="_get_nivelbase")
 
      # agafem el id de on ve | variable que ho te
      fighters = fields.One2many("moixoloadventure.cantsquadronfigther", "squadron" )
      batle = fields.Many2many("moixoloadventure.batle")
      city = fields.Many2one("moixoloadventure.city")
-
     
     #funcions escuadron
      def _get_nivelbase(self):
           for squadron in self:
                resistance=0
                powerattac=0
+               nivell = 0
                for figther in squadron.fighters:
                     resistance = resistance + figther.figther.powerresistance * figther.cant
                     powerattac = resistance + figther.figther.poweratac * figther.cant
+                    nivell = nivell + figther.figther.nivel
                squadron.powerresistance = resistance
                squadron.poweratac = powerattac
+               squadron.nivel = nivell
+     
 
 
      
 class cantsquadronfigther(models.Model):#******************************************************************************************
      _name = 'moixoloadventure.cantsquadronfigther'
      _description = 'Cant figthers for squadron '
-     nivel = fields.Integer(compute="_get_nivelfigther")
-     cant = fields.Integer()
+     
+     cant = fields.Integer()     
      positionFormation = fields.Selection([('1', '1'), ('2','2'), ('3', '3')])
 
      figther = fields.Many2one("moixoloadventure.fighter", ondelete='set null')
      squadron = fields.Many2one("moixoloadventure.squadron")
 
-     @api.depends('nivel')
-     def _get_nivelfigther(self):
-          for f in self:
-               f.nivel =  f.figther.powerresistance + f.figther.poweratac
-          
-
-
+     nivellfigther = fields.Integer(related="figther.nivel")
      
 
 class fighter(models.Model):#******************************************************************************************

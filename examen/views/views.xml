@@ -1,0 +1,158 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="examen.furgoneta_list">
+      <field name="name">examen furgoneta</field>
+      <field name="model">examen.furgoneta</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="foto"/>
+          <field name="matricula"/>
+          <field name="capacitat"/>
+          <field name="viatgequefa"/>
+
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="examen.furgoneta_form">
+      <field name="name">examen furgoneta</field>
+      <field name="model">examen.furgoneta</field>
+      <field name="arch" type="xml">      
+      <form>
+        <sheet>
+        
+          <group>
+          
+            <group>
+             
+              <field name="name"/>
+              <field name="foto" widget="image"/>
+
+            </group>
+
+            <group>
+                        
+              <field name="matricula"/>
+              <field name="capacitat"/>
+              
+            
+            </group>
+            <field name="viatgequefa"/>
+          </group>
+        </sheet>
+      </form>
+      </field>
+    </record>
+    
+
+
+
+
+
+
+
+
+
+    <record model="ir.ui.view" id="examen.paquet_list">
+      <field name="name">examen paquet</field>
+      <field name="model">examen.paquet</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="foto"/>
+          <field name="volum"/>
+          <field name="identificador"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="examen.viatge_list">
+      <field name="name">examen viatge</field>
+      <field name="model">examen.viatge</field>
+      <field name="arch" type="xml">
+        <tree>
+          
+          <field name="ident"/>
+          <field name="furgonetaasociada"/>
+          <field name="paquetsqueporta"/>
+          
+        </tree>  
+        </field>
+    </record>
+<!-- Filtres
+    <record model="ir.ui.view" id="examen.viatge_search">
+      <field name="name">examen search</field>
+      <field name="model">examen.viatge</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"></field>
+           
+          <filter name="furgonetaasociada" string="realitza" domain="[('duration', '=', '30')]"/>
+          
+        </search>
+    </record>
+-->
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="examen.action_furgoneta_window">
+      <field name="name">examen window</field>
+      <field name="res_model">examen.furgoneta</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="examen.action_paquet_window">
+      <field name="name">examen window</field>
+      <field name="res_model">examen.paquet</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="examen.action_viatge_window">
+      <field name="name">examen window</field>
+      <field name="res_model">examen.viatge</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="examen.action_server">
+      <field name="name">examen server</field>
+      <field name="model_id" ref="model_examen_examen"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="Repartostarde" id="examen.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="repartos tarde" id="examen.menu_1" parent="examen.menu_root"/>
+    
+
+    <!-- actions -->
+
+    <menuitem name="furgoneta" id="examen.menu_1_list" parent="examen.menu_1" action="examen.action_furgoneta_window"/>
+    <menuitem name="paquet" id="examen.menu_2_list" parent="examen.menu_1" action="examen.action_paquet_window"/>
+    <menuitem name="viatge" id="examen.menu_3_list" parent="examen.menu_1" action="examen.action_viatge_window"/>
+
+
+
+    <!--    
+    <menuitem name="Server to list" id="examen" parent="examen.menu_2"
+              action="examen.action_server"/>
+    -->  
+  </data>
+</odoo>
