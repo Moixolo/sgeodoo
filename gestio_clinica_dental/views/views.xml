@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="gestio_clinica_dental.list">
+      <field name="name">Patient</field>
+      <field name="model">gestio_clinica_dental.Patient</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="gestio_clinica_dental.action_window">
+      <field name="name">GestioClinicaDental window</field>
+      <field name="res_model">gestio_clinica_dental.gestio_clinica_dental</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="gestio_clinica_dental.action_server">
+      <field name="name">GestioClinicaDental server</field>
+      <field name="model_id" ref="model_gestio_clinica_dental_gestio_clinica_dental"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="GestioClinicaDental" id="gestio_clinica_dental.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu 1" id="gestio_clinica_dental.menu_1" parent="gestio_clinica_dental.menu_root"/>
+
+
+    <!-- actions -->
+
+    <menuitem name="List" id="gestio_clinica_dental.menu_1_list" parent="gestio_clinica_dental.menu_1"
+              action="gestio_clinica_dental.action_window"/>
+    <menuitem name="Server to list" id="gestio_clinica_dental" parent="gestio_clinica_dental.menu_2"
+              action="gestio_clinica_dental.action_server"/>
+
+  </data>
+</odoo>
