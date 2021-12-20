@@ -2,29 +2,253 @@
   <data>
     <!-- explicit list view definition -->
 
-    <record model="ir.ui.view" id="gestio_clinica_dental.list">
+    <!-- ******************************************************************************* -->
+    <!-- **** PATIENT VIEWS ************************************************************ -->
+    <!-- ******************************************************************************* -->
+    <record model="ir.ui.view" id="gestio_clinica_dental.patient_list">
       <field name="name">Patient</field>
-      <field name="model">gestio_clinica_dental.Patient</field>
+      <field name="model">gestio_clinica_dental.patient</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
+        </tree>
+      </field>
+    </record>
 
+    <!-- ******************************************************************************* -->
+    <!-- **** DOCTOR VIEWS ************************************************************ -->
+    <!-- ******************************************************************************* -->
+    <record model="ir.ui.view" id="gestio_clinica_dental.doctor_list">
+      <field name="name">Doctor</field>
+      <field name="model">gestio_clinica_dental.doctor</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
         </tree>
       </field>
     </record>
 
 
+    <!-- ******************************************************************************* -->
+    <!-- **** MEDICAL ASSISTANT VIEWS ************************************************************ -->
+    <!-- ******************************************************************************* -->
+    <record model="ir.ui.view" id="gestio_clinica_dental.medicalassistant_list">
+      <field name="name">Medical assistant</field>
+      <field name="model">gestio_clinica_dental.medicalassistant</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- ******************************************************************************* -->
+    <!-- **** SALUT FORM VIEWS ************************************************************ -->
+    <!-- ******************************************************************************* -->
+    <record model="ir.ui.view" id="gestio_clinica_dental.salutformulary_list">
+      <field name="name">Salut formulary</field>
+      <field name="model">gestio_clinica_dental.salutformulary</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="idform"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- ******************************************************************************* -->
+    <!-- **** CONSENTS VIEWS ************************************************************ -->
+    <!-- ******************************************************************************* -->
+    <record model="ir.ui.view" id="gestio_clinica_dental.consent_list">
+      <field name="name">Consent</field>
+      <field name="model">gestio_clinica_dental.consent</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="idform"/>
+        </tree>
+      </field>
+    </record>
+    <!-- ******************************************************************************* -->
+    <!-- **** ANAMNESIS VIEWS ************************************************************ -->
+    <!-- ******************************************************************************* -->
+    <record model="ir.ui.view" id="gestio_clinica_dental.anamnesis_list">
+      <field name="name">Anamnesis</field>
+      <field name="model">gestio_clinica_dental.anamnesis</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="idform"/>
+        </tree>
+      </field>
+    </record>
+    <!-- ******************************************************************************* -->
+    <!-- **** MEDICALHISTORY VIEWS ************************************************************ -->
+    <!-- ******************************************************************************* -->
+    <record model="ir.ui.view" id="gestio_clinica_dental.medicalhistory_list">
+      <field name="name">Medical history</field>
+      <field name="model">gestio_clinica_dental.medicalhistory</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="patientmed"/>
+        </tree>
+      </field>
+    </record>
+    <!-- ******************************************************************************* -->
+    <!-- **** TEXT MEDICAL VIEWS ************************************************************ -->
+    <!-- ******************************************************************************* -->
+    <record model="ir.ui.view" id="gestio_clinica_dental.textmedicalhistory_list">
+      <field name="name">Text medical history</field>
+      <field name="model">gestio_clinica_dental.textmedicalhistory</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="insertiondate"/>
+        </tree>
+      </field>
+    </record>
+    <!-- ******************************************************************************* -->
+    <!-- **** SCHEDULE VIEWS ************************************************************ -->
+    <!-- ******************************************************************************* -->
+    <record model="ir.ui.view" id="gestio_clinica_dental.principalschedule_list">
+      <field name="name">Principal schedule</field>
+      <field name="model">gestio_clinica_dental.principalschedule</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="hours"/>
+        </tree>
+      </field>
+    </record>
+    <!-- ******************************************************************************* -->
+    <!-- **** QUOTES VIEWS ************************************************************ -->
+    <!-- ******************************************************************************* -->
+    <record model="ir.ui.view" id="gestio_clinica_dental.quotes_list">
+      <field name="name">Quotes</field>
+      <field name="model">gestio_clinica_dental.quotes</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="idquotes"/>
+        </tree>
+      </field>
+    </record>
+    <!-- ******************************************************************************* -->
+    <!-- **** TREATMENT VIEWS ************************************************************ -->
+    <!-- ******************************************************************************* -->
+    <record model="ir.ui.view" id="gestio_clinica_dental.treatment_list">
+      <field name="name">Treatment</field>
+      <field name="model">gestio_clinica_dental.treatment</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- ******************************************************************************* -->
+    <!-- **** BUDGET VIEWS ************************************************************ -->
+    <!-- ******************************************************************************* -->
+    <record model="ir.ui.view" id="gestio_clinica_dental.budget_list">
+      <field name="name">Budget</field>
+      <field name="model">gestio_clinica_dental.budget</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="idbudget"/>
+        </tree>
+      </field>
+    </record>
+    <!-- ******************************************************************************* -->
+    <!-- **** LABORATORY VIEWS ************************************************************ -->
+    <!-- ******************************************************************************* -->
+    <record model="ir.ui.view" id="gestio_clinica_dental.laboratory_list">
+      <field name="name">Laboratory</field>
+      <field name="model">gestio_clinica_dental.laboratory</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
     <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="gestio_clinica_dental.action_window">
-      <field name="name">GestioClinicaDental window</field>
-      <field name="res_model">gestio_clinica_dental.gestio_clinica_dental</field>
+
+    <record model="ir.actions.act_window" id="gestio_clinica_dental.action_patient_window">
+      <field name="name">GestioClinicaDental Patient</field>
+      <field name="res_model">gestio_clinica_dental.patient</field>
       <field name="view_mode">tree,form</field>
     </record>
--->
+
+
+    <record model="ir.actions.act_window" id="gestio_clinica_dental.action_doctor_window">
+      <field name="name">GestioClinicaDental Doctor</field>
+      <field name="res_model">gestio_clinica_dental.doctor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="gestio_clinica_dental.action_medicalassistant_window">
+      <field name="name">GestioClinicaDental Medical assistant</field>
+      <field name="res_model">gestio_clinica_dental.medicalassistant</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="gestio_clinica_dental.action_salutformulary_window">
+      <field name="name">GestioClinicaDental Salut formulary</field>
+      <field name="res_model">gestio_clinica_dental.salutformulary</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="gestio_clinica_dental.action_consent_window">
+      <field name="name">GestioClinicaDental Consent</field>
+      <field name="res_model">gestio_clinica_dental.consent</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="gestio_clinica_dental.action_anamnesis_window">
+      <field name="name">GestioClinicaDental Anamnesis</field>
+      <field name="res_model">gestio_clinica_dental.anamnesis</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="gestio_clinica_dental.action_medicalhistory_window">
+      <field name="name">GestioClinicaDental Medical History</field>
+      <field name="res_model">gestio_clinica_dental.medicalhistory</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="gestio_clinica_dental.action_textmedicalhistory_window">
+      <field name="name">GestioClinicaDental Text Medical History</field>
+      <field name="res_model">gestio_clinica_dental.textmedicalhistory</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="gestio_clinica_dental.action_principalschedule_window">
+      <field name="name">GestioClinicaDental Principal Schedule</field>
+      <field name="res_model">gestio_clinica_dental.principalschedule</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="gestio_clinica_dental.action_quotes_window">
+      <field name="name">GestioClinicaDental Quotes</field>
+      <field name="res_model">gestio_clinica_dental.quotes</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="gestio_clinica_dental.action_treatment_window">
+      <field name="name">GestioClinicaDental Treatment</field>
+      <field name="res_model">gestio_clinica_dental.treatment</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="gestio_clinica_dental.action_budget_window">
+      <field name="name">GestioClinicaDental budget</field>
+      <field name="res_model">gestio_clinica_dental.budget</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="gestio_clinica_dental.action_laboratory_window">
+      <field name="name">GestioClinicaDental Laboratory</field>
+      <field name="res_model">gestio_clinica_dental.laboratory</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
 
     <!-- server action to the one above -->
-<!--
+    <!--
     <record model="ir.actions.server" id="gestio_clinica_dental.action_server">
       <field name="name">GestioClinicaDental server</field>
       <field name="model_id" ref="model_gestio_clinica_dental_gestio_clinica_dental"/>
@@ -45,15 +269,24 @@
 
     <!-- menu categories -->
 
-    <menuitem name="Menu 1" id="gestio_clinica_dental.menu_1" parent="gestio_clinica_dental.menu_root"/>
+    <menuitem name="Gestio Clinica" id="gestio_clinica_dental.menu_1" parent="gestio_clinica_dental.menu_root"/>
 
 
     <!-- actions -->
 
-    <menuitem name="List" id="gestio_clinica_dental.menu_1_list" parent="gestio_clinica_dental.menu_1"
-              action="gestio_clinica_dental.action_window"/>
-    <menuitem name="Server to list" id="gestio_clinica_dental" parent="gestio_clinica_dental.menu_2"
-              action="gestio_clinica_dental.action_server"/>
+    <menuitem name="Patient" id="gestio_clinica_dental.menu_patient" parent="gestio_clinica_dental.menu_1" action="gestio_clinica_dental.action_patient_window"/>
+    <menuitem name="Doctor" id="gestio_clinica_dental.menu_doctor" parent="gestio_clinica_dental.menu_1" action="gestio_clinica_dental.action_doctor_window"/>
+    <menuitem name="Medical assistant" id="gestio_clinica_dental.menu_medicalassistant" parent="gestio_clinica_dental.menu_1" action="gestio_clinica_dental.action_medicalassistant_window"/>
+    <menuitem name="Salut formulary" id="gestio_clinica_dental.menu_salutformulary" parent="gestio_clinica_dental.menu_1" action="gestio_clinica_dental.action_salutformulary_window"/>
+    <menuitem name="Consent" id="gestio_clinica_dental.menu_consent" parent="gestio_clinica_dental.menu_1" action="gestio_clinica_dental.action_consent_window"/>
+    <menuitem name="Anamnesis" id="gestio_clinica_dental.menu_anamnesis" parent="gestio_clinica_dental.menu_1" action="gestio_clinica_dental.action_anamnesis_window"/>
+    <menuitem name="Medical history" id="gestio_clinica_dental.menu_medicalhistory" parent="gestio_clinica_dental.menu_1" action="gestio_clinica_dental.action_anamnesis_window"/>
+    <menuitem name="Text Medical History" id="gestio_clinica_dental.menu_textmedicalhistory" parent="gestio_clinica_dental.menu_1" action="gestio_clinica_dental.action_textmedicalhistory_window"/>
+    <menuitem name="Principal schedule" id="gestio_clinica_dental.menu_principalschedule" parent="gestio_clinica_dental.menu_1" action="gestio_clinica_dental.action_principalschedule_window"/>
+    <menuitem name="Quotes" id="gestio_clinica_dental.menu_quotes" parent="gestio_clinica_dental.menu_1" action="gestio_clinica_dental.action_quotes_window"/>
+    <menuitem name="Treatment" id="gestio_clinica_dental.menu_treatment" parent="gestio_clinica_dental.menu_1" action="gestio_clinica_dental.action_treatment_window"/>
+    <menuitem name="Budget" id="gestio_clinica_dental.menu_budget" parent="gestio_clinica_dental.menu_1" action="gestio_clinica_dental.action_budget_window"/>
+    <menuitem name="Laboratory" id="gestio_clinica_dental.menu_laboratory" parent="gestio_clinica_dental.menu_1" action="gestio_clinica_dental.action_laboratory_window"/>
 
   </data>
 </odoo>
