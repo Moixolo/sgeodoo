@@ -6,4 +6,4 @@ access_moixoloadventure_fighter,moixoloadventure.figther,model_moixoloadventure_
 access_moixoloadventure_cantsquadronfigther,moixoloadventure.cantsquadronfigther,model_moixoloadventure_cantsquadronfigther,base.group_user,1,1,1,1
 access_moixoloadventure_batle,moixoloadventure.batle,model_moixoloadventure_batle,base.group_user,1,1,1,1
 access_moixoloadventure_calendar,moixoloadventure_calendar,model_moixoloadventure_calendar,base.group_user,1,1,1,1
-
+access_moixoloadventure_pays,moixoloadventure_pays,model_moixoloadventure_pays,base.group_user,1,1,1,1
