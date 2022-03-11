@@ -321,6 +321,9 @@
     </record>
 
 
+     <!-- CRON -->
+
+
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="gestio_clinica_dental.action_patient_res_partner_window">

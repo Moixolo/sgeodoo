@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_examen2_email,examen2.email,model_examen2_email,base.group_user,1,1,1,1
+access_examen2_direccion,examen2.direccion,model_examen2_direccion,base.group_user,1,1,1,1
+access_examen2_wizard,examen2.wizard,model_examen2_wizard,base.group_user,1,1,1,1
+access_examen2_finestra,examen2.finestra,model_examen2_finestra,base.group_user,1,1,1,1
+

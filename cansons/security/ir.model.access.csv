@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cansons_canso,cansons.canso,model_cansons_canso,base.group_user,1,1,1,1
+access_cansons_proces_wizar,cansons.proces_wizar,model_cansons_proces_wizar,base.group_user,1,1,1,1

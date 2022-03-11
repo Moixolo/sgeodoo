@@ -1,0 +1,185 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <!-- model persona list-->
+    <record model="ir.ui.view" id="examen2.list">
+      <field name="name">examen2 list</field>
+      <field name="model">res.partner</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="cognom"/>
+          <field name="vat" string="DNI"/>
+          <field name="email"/>
+          <field name="direccio"/>
+        </tree>
+      </field>
+    </record>
+    <!-- model persona form-->
+    <record model="ir.ui.view" id="examen2.form">
+      <field name="name">examen2 form</field>
+      <field name="model">res.partner</field>
+      <field name="arch" type="xml">
+        <form>
+
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="cognom"/>
+              <field name="vat" string="DNI"/>
+              <field name="description"/>
+            </group>
+            <group>
+              <field name="direccio"/>
+            </group>
+            <footer>
+              <button name="crearpersonawizar" type="object" string="Afegir" class="oe_highlight"/>
+            </footer>
+          </sheet>
+
+        </form>
+      </field>
+    </record>
+
+    <!-- model direccion list-->
+    <record model="ir.ui.view" id="examen2.direccion_list">
+      <field name="name">direccio list</field>
+      <field name="model">examen2.direccion</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="carrer"/>
+          <field name="numero"/>
+          <field name="provincia"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- model direccion form-->
+    <record id="examen2.direccion_form" model="ir.ui.view">
+      <field name="name">model_name.view.form</field>
+      <field name="model">examen2.direccion</field>
+      <field name="arch" type="xml">
+        <form string="form direccion">
+          <sheet>
+            <group>
+              <field name="carrer"/>
+              <field name="numero"/>
+              <field name="provincia"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record> 
+
+
+
+
+
+    <!-- ****** wizard *********************************  -->
+
+    <record model="ir.ui.view" id="examen2.action_process_wizard_window">
+      <field name="name">field_value</field>
+      <field name="model">examen2.wizard</field>
+      <field name="arch" type="xml">
+        <form string="Wizard crear persona">
+          <header>
+          </header>
+          <sheet>
+            <group>
+              <field name="name"/>
+            </group>
+          </sheet>
+          <footer>
+
+
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <!-- *************************************** -->
+    <!-- ****** cron 1 ************************  
+    <record id="examen2.cron_finestra" model="ir.cron">
+      <field name="name">Finestra</field>
+      <field name="active" eval="True" />
+      <field name="user_id" ref="base.user_root" />
+      <field name="interval_number">2</field>
+      <field name="interval_type">minutes</field>
+      <field name="numbercall">-1</field>
+      <field name="doall">1</field> -->
+      <!--<field name="nextcall">2016-12-31 23:59:59</field>-->
+      <!--
+      <field name="model" eval="examen2.finestra" />
+      <field name="function" eval="finestradvertencia" />
+      <field name="args" eval="" /> -->
+      <!--<field name="priority" eval="5" />-->
+      <!--
+    </record>
+    -->
+
+    <!-- ****** cron 2 ************************  -->
+    <record model="ir.cron" forcecreate="True" id="examen2.cron_finestra">
+            <field name="name">Negocity: Cron Building Update</field>
+            <field name="model_id" ref="model_examen2_finestra"/>
+            <field name="state">code</field>
+            <field name="code">model.update_building()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="activity_user_type">specific</field>
+            <field name="doall" eval="False" />
+    </record>
+
+    <!-- *************************************** -->
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="examen2.action_persona_window">
+      <field name="name">examen2 window</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('examen2.list')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('examen2.form')}),]" />
+    </record>
+
+    <record model="ir.actions.act_window" id="examen2.action_direccio_window">
+      <field name="name">examen2 window</field>
+      <field name="res_model">examen2.direccion</field>
+      <field name="view_mode">tree,form</field>
+
+    </record>
+
+    <record model="ir.actions.act_window" id="examen2.actionwizard_window">
+      <field name="name">examen2 process wizard</field>
+      <field name="res_model">examen2.wizard</field>
+      <field name="view_mode">form</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="view_id" ref="examen2.action_process_wizard_window" />
+      <field name="target">new</field>
+    </record>
+
+
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="examen2" id="examen2.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="persona" id="examen2.menu_1" parent="examen2.menu_root"/>
+
+
+
+    <!-- actions -->
+
+    <menuitem name="Persona" id="examen2.menu_1_list" parent="examen2.menu_1" action="examen2.action_persona_window"/>
+
+    <menuitem name="Direccio" id="examen2.menu_direccio" parent="examen2.menu_1" action="examen2.action_direccio_window"/>
+
+
+  </data>
+</odoo>
